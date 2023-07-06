@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+
+Fig3 = plt.figure(figsize = (20,8),facecolor = "w",edgecolor = "black")
+rect = Fig3.patch # a rectangle instance
+rect.set_facecolor("white")
+plt.subplots_adjust(left = None,bottom = None,right = None,top = None,wspace = 0,hspace = 0.2)
+
+ax = Fig3.add_subplot(111)
+
+X = [................]
+
+#ax.set_aspect('equal') 
+vmin_clr1 =min(X)
+vmax_clr1 =max(X)
+norm1 = matplotlib.colors.Normalize(vmin=vmin_clr1, vmax=vmax_clr1)
+cmap1 = matplotlib.cm.ScalarMappable(norm=norm1, cmap = plt.cm.get_cmap("rainbow"))
+cmap1.set_array([])   
+#Now adding the colorbar
+cbar1 = Fig3.colorbar(cmap1, norm=norm1, ax=(ax) ,shrink=0.5, spacing='proportional',pad=.05, orientation='vertical')
+cbar1.set_label("X [units]",color ="k")
+cbar1.ax.minorticks_on()
+cbar1.ax.tick_params(direction='in',which='major', color='black', length=10,width=0.5,labelsize=23)
+cbar1.ax.tick_params(direction='in',which='minor', color='black', length=5,width=0.5,labelsize=23)
+cbar1.update_ticks()
+
